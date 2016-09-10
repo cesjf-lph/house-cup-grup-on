@@ -3,7 +3,6 @@ package br.cesjf.lpwsd;
 
 import br.cesjf.lpwsd.dao.AlunoJpaController;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;

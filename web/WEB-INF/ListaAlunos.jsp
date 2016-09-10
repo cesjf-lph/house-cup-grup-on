@@ -4,6 +4,7 @@
     Author     : aluno
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +17,7 @@
         
            <ul>
                     
-                        <c:forEach var="aluno" items="${alunos}">
+                <c:forEach var="aluno" items="${alunos}">
                             <li style="margin-bottom:10px;font-family: arial; ">
                                 <span>${aluno.codAluno}</span>
                                 <span style="background:lightgray;padding:5px">${aluno.nomeAluno}</span>

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.servlet.RequestDispatcher;
@@ -57,8 +58,21 @@ public class HistoricoServelet extends HttpServlet {
         HistoricoJpaController DaoHistorico = new HistoricoJpaController(ut, emf);
         List<Historico> rs3 = DaoHistorico.findHistoricoEntities();
         System.out.println(rs3);
-        
+
         request.setAttribute("historicos", rs3);
+
+        //##### 
+       /* try {
+         EntityManager em = emf.createEntityManager();
+            List<Object[]> l = em.createQuery("").getResultList();
+        
+            String grupo = (String) object[0];
+            Integer total = (Integer) object[1];
+         
+         em.close();
+      } catch (Exception e) {
+        System.err.println("Erro:" + e);
+      }*/
         
         dispachante.forward(request, response);
     }
@@ -72,7 +86,6 @@ public class HistoricoServelet extends HttpServlet {
         int codProfessor = Integer.parseInt(request.getParameter("professor"));
 
         Historico historico = new Historico();
-
         historico.setDescricao(vDescricao);
         historico.setPonto(vNota);
         historico.setCodAluno(codAluno);

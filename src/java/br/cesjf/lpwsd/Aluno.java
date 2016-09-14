@@ -13,10 +13,21 @@ public class Aluno implements Serializable {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private long codAluno;
     private String nomeAluno;
-
-    public Aluno() {
+ private int codGrupo;
+ 
+ 
+     public Aluno() {
+    }
+    
+    public int getCodGrupo() {
+        return codGrupo;
     }
 
+    public void setCodGrupo(int codGrupo) {
+        this.codGrupo = codGrupo;
+    }
+   
+        
     public long getCodAluno() {
         return codAluno;
     }

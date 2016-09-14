@@ -21,6 +21,7 @@
                             <li style="margin-bottom:10px;font-family: arial; ">
                                 <span>${aluno.codAluno}</span>
                                 <span style="background:lightgray;padding:5px">${aluno.nomeAluno}</span>
+                                <span style="background:lightgreen;padding:5px">${aluno.codGrupo}</span>
                             </li>
                         </c:forEach>
                     </ul>

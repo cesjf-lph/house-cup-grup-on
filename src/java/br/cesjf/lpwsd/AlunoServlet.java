@@ -45,8 +45,10 @@ public class AlunoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String nome = request.getParameter("nome");
+        int grupo = Integer.parseInt( request.getParameter("grupo"));
         Aluno aluno = new Aluno();
         aluno.setNomeAluno(nome);
+        aluno.setCodGrupo(grupo);
 
         AlunoJpaController dao = new  AlunoJpaController(ut, emf);
         try {

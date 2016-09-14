@@ -16,6 +16,13 @@
         <form action="NovoAluno.html" method="POST"  >
             <p>Nome:</p>
             <input type="text" name="nome">
+            <p>Grupo:</p>
+            <select name="grupo">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
             <input type="submit" text="Enviar"> 
         </form>
     </body>

@@ -12,16 +12,23 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Historico</title>
         <style>
-            .lista{
-                margin-right: 30px;
-                /* margin-bottom: 10px; */
-                background-color: #457355;
-                color: white;
-                padding: 5px;
+            .tabela{
+
+
             }
-            li{
-                margin-bottom: 10px;
+            tr{
+
             }
+            th {
+                /* border: 1px solid black; */
+                text-align: left;
+                padding-right: 35px;
+            }
+            .tabela td {
+                border: 5px solid white;
+                padding: 10px;
+                background: aquamarine;}
+
         </style>
     </head>
     <body>
@@ -55,22 +62,57 @@
                 <tr>
                     <td></td>
                     <td><input type="submit" value="Enviar"></td>
+                <br>
                 </tr>
-                <tr><td></td><td><hr></td></tr>
+                <tr><td><hr></td><td><hr></td></tr>
                 <tr>
                     <TD></TD>
                     <td>
+                        <h2>Históricos</h2>
+                        <br>
+                        <table class="tabela">
 
-                        <c:forEach var="historico" items="${historicos}">
-                    <li class="lista" style="margin-bottom:10px;font-family: arial; ">
-                        <span>${historico.codAluno}</span>
-                        <span>${historico.codProfessor}</span>
-                        <span>${historico.ponto}</span>
-                        <span>${historico.descricao}</span>
-                        <span>${historico.data}</span>
-                    </li>
-                </c:forEach>
-                </td>
+                            <tr style="border-bottom: 1px solid black;">
+                                <td>
+                                    <select name="aluno" id="FiltroAluno">
+                                        <option value="0">Todos</option>
+                                        <c:forEach items="${alunos}" var="aluno">
+                                            <option value="${aluno.codAluno}"><c:out value="${aluno.nomeAluno}" /></option>
+                                        </c:forEach>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select id="FiltroData">
+                                        <option value="1">1º semestre</option>
+                                        <option value="2">2º semestre</option>
+                                    </select>
+                                </td>
+                                    <td>
+                                    <select id="FiltroData">
+                                        <option value="1">Grupo 1</option>
+                                        <option value="2">Grupo 2</option>
+                                         <option value="1">Grupo 3</option>
+                                        <option value="2">Grupo 4</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <form action="historico.html" method="POST"  >
+                                        <input type="submit" text="Filtrar"> 
+                                    </form>
+                                </td>
+                            </tr>    
+                            <tr><th>codAluno</th><th>codProfessor</th><th>Ponto</th><th>Descricao</th><th>Data</th></tr>
+                                    <c:forEach var="historico" items="${historicos}">
+                                <tr>
+                                    <td><span>${historico.codAluno}</span></td>
+                                    <td>    <span>${historico.codProfessor}</span></td>
+                                    <td>    <span>${historico.ponto}</span></td>
+                                    <td>    <span>${historico.descricao}</span></td>
+                                    <td>   <span>${historico.data}</span></td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </td>
                 </tr>
             </table>
         </form>

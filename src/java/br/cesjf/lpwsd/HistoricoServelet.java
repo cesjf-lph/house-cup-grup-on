@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -62,7 +63,7 @@ public class HistoricoServelet extends HttpServlet {
         request.setAttribute("historicos", rs3);
 
         //##### 
-       /* try {
+        /* try {
          EntityManager em = emf.createEntityManager();
             List<Object[]> l = em.createQuery("").getResultList();
         
@@ -73,7 +74,6 @@ public class HistoricoServelet extends HttpServlet {
       } catch (Exception e) {
         System.err.println("Erro:" + e);
       }*/
-        
         dispachante.forward(request, response);
     }
 
@@ -86,10 +86,17 @@ public class HistoricoServelet extends HttpServlet {
         int codProfessor = Integer.parseInt(request.getParameter("professor"));
 
         Historico historico = new Historico();
+        //
+        Aluno aluno = new Aluno();
+        aluno.setCodAluno(codAluno);
+        //
+        Professor professor = new Professor();
+        professor.setCodProfessor(codProfessor);
+            
         historico.setDescricao(vDescricao);
         historico.setPonto(vNota);
-        historico.setCodAluno(codAluno);
-        historico.setCodProfessor(codProfessor);
+        historico.setAluno(aluno);
+        historico.setProfessor(professor);
         Date d = new Date();
         historico.setData(d);
 

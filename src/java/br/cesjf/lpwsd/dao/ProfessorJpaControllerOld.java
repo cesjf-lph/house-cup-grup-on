@@ -5,9 +5,9 @@
  */
 package br.cesjf.lpwsd.dao;
 
-import br.cesjf.lpwsd.Historico;
-import br.cesjf.lpwsd.dao.exceptions.NonexistentEntityException;
-import br.cesjf.lpwsd.dao.exceptions.RollbackFailureException;
+import br.cesjf.lpwsd.Professor;
+import br.cesjf.lpwsd.exceptions.NonexistentEntityException;
+import br.cesjf.lpwsd.exceptions.RollbackFailureException;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -22,9 +22,9 @@ import javax.transaction.UserTransaction;
  *
  * @author aluno
  */
-public class HistoricoJpaController implements Serializable {
+public class ProfessorJpaControllerOld implements Serializable {
 
-    public HistoricoJpaController(UserTransaction utx, EntityManagerFactory emf) {
+    public ProfessorJpaControllerOld(UserTransaction utx, EntityManagerFactory emf) {
         this.utx = utx;
         this.emf = emf;
     }
@@ -35,12 +35,12 @@ public class HistoricoJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Historico historico) throws RollbackFailureException, Exception {
+    public void create(Professor professor) throws RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
             em = getEntityManager();
-            em.persist(historico);
+            em.persist(professor);
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -56,12 +56,12 @@ public class HistoricoJpaController implements Serializable {
         }
     }
 
-    public void edit(Historico historico) throws NonexistentEntityException, RollbackFailureException, Exception {
+    public void edit(Professor professor) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
             em = getEntityManager();
-            historico = em.merge(historico);
+            professor = em.merge(professor);
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -71,9 +71,9 @@ public class HistoricoJpaController implements Serializable {
             }
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                long id = historico.getCodHistorico();
-                if (findHistorico(id) == null) {
-                    throw new NonexistentEntityException("The historico with id " + id + " no longer exists.");
+                long id = professor.getCodProfessor();
+                if (findProfessor(id) == null) {
+                    throw new NonexistentEntityException("The professor with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -89,14 +89,14 @@ public class HistoricoJpaController implements Serializable {
         try {
             utx.begin();
             em = getEntityManager();
-            Historico historico;
+            Professor professor;
             try {
-                historico = em.getReference(Historico.class, id);
-                historico.getCodHistorico();
+                professor = em.getReference(Professor.class, id);
+                professor.getCodProfessor();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The historico with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The professor with id " + id + " no longer exists.", enfe);
             }
-            em.remove(historico);
+            em.remove(professor);
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -112,19 +112,19 @@ public class HistoricoJpaController implements Serializable {
         }
     }
 
-    public List<Historico> findHistoricoEntities() {
-        return findHistoricoEntities(true, -1, -1);
+    public List<Professor> findProfessorEntities() {
+        return findProfessorEntities(true, -1, -1);
     }
 
-    public List<Historico> findHistoricoEntities(int maxResults, int firstResult) {
-        return findHistoricoEntities(false, maxResults, firstResult);
+    public List<Professor> findProfessorEntities(int maxResults, int firstResult) {
+        return findProfessorEntities(false, maxResults, firstResult);
     }
 
-    private List<Historico> findHistoricoEntities(boolean all, int maxResults, int firstResult) {
+    private List<Professor> findProfessorEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Historico.class));
+            cq.select(cq.from(Professor.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -136,20 +136,20 @@ public class HistoricoJpaController implements Serializable {
         }
     }
 
-    public Historico findHistorico(long id) {
+    public Professor findProfessor(long id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Historico.class, id);
+            return em.find(Professor.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getHistoricoCount() {
+    public int getProfessorCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Historico> rt = cq.from(Historico.class);
+            Root<Professor> rt = cq.from(Professor.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

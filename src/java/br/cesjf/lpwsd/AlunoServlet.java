@@ -1,7 +1,7 @@
 package br.cesjf.lpwsd;
 
 
-import br.cesjf.lpwsd.dao.AlunoJpaController;
+import br.cesjf.lpwsd.dao.AlunoJpaControllerOld;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -50,7 +50,7 @@ public class AlunoServlet extends HttpServlet {
         aluno.setNomeAluno(nome);
         aluno.setCodGrupo(grupo);
 
-        AlunoJpaController dao = new  AlunoJpaController(ut, emf);
+        AlunoJpaControllerOld dao = new  AlunoJpaControllerOld(ut, emf);
         try {
             dao.create(aluno);
         } catch (Exception ex) {

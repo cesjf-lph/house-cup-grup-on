@@ -1,7 +1,7 @@
 package br.cesjf.lpwsd;
 
 import br.cesjf.lpwsd.Professor;
-import br.cesjf.lpwsd.dao.ProfessorJpaController;
+import br.cesjf.lpwsd.dao.ProfessorJpaControllerOld;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -36,7 +36,7 @@ public class ListaProfessorServelet extends HttpServlet {
       
         RequestDispatcher dispachante = request.getRequestDispatcher("/WEB-INF/ListaProfs.jsp");
         
-        ProfessorJpaController DaoProf = new ProfessorJpaController(ut, emf);
+        ProfessorJpaControllerOld DaoProf = new ProfessorJpaControllerOld(ut, emf);
 
         List<Professor> rs = DaoProf.findProfessorEntities();
         System.out.println(rs); 

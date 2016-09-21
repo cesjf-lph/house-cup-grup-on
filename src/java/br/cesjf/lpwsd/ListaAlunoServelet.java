@@ -5,7 +5,7 @@
  */
 package br.cesjf.lpwsd;
 
-import br.cesjf.lpwsd.dao.AlunoJpaController;
+import br.cesjf.lpwsd.dao.AlunoJpaControllerOld;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -42,7 +42,7 @@ public class ListaAlunoServelet extends HttpServlet {
         
         RequestDispatcher dispachante = request.getRequestDispatcher("/WEB-INF/ListaAlunos.jsp");
         
-        AlunoJpaController DaoAluno = new AlunoJpaController(ut, emf);
+        AlunoJpaControllerOld DaoAluno = new AlunoJpaControllerOld(ut, emf);
 
         List<Aluno> rs = DaoAluno.findAlunoEntities();
         System.out.println(rs); 

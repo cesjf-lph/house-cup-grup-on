@@ -6,8 +6,8 @@
 package br.cesjf.lpwsd.dao;
 
 import br.cesjf.lpwsd.Historico;
-import br.cesjf.lpwsd.dao.exceptions.NonexistentEntityException;
-import br.cesjf.lpwsd.dao.exceptions.RollbackFailureException;
+import br.cesjf.lpwsd.exceptions.NonexistentEntityException;
+import br.cesjf.lpwsd.exceptions.RollbackFailureException;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -22,9 +22,9 @@ import javax.transaction.UserTransaction;
  *
  * @author aluno
  */
-public class HistoricoJpaController implements Serializable {
+public class HistoricoJpaControllerOld implements Serializable {
 
-    public HistoricoJpaController(UserTransaction utx, EntityManagerFactory emf) {
+    public HistoricoJpaControllerOld(UserTransaction utx, EntityManagerFactory emf) {
         this.utx = utx;
         this.emf = emf;
     }

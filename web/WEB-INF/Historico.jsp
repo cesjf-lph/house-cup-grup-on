@@ -72,7 +72,7 @@
                         <br>
                         <table class="tabela">
 
-                            <tr style="border-bottom: 1px solid black;">
+                            <%--<tr style="border-bottom: 1px solid black;">
                                 <td>
                                     <select name="aluno" id="FiltroAluno">
                                         <option value="0">Todos</option>
@@ -100,12 +100,13 @@
                                         <input type="submit" text="Filtrar"> 
                                     </form>
                                 </td>
-                            </tr>    
-                            <tr><th>codAluno</th><th>codProfessor</th><th>Ponto</th><th>Descricao</th><th>Data</th></tr>
+                            </tr>     --%>
+                            <tr><th>Aluno</th><th>Grupo</th><th>Professor</th><th>Ponto</th><th>Descricao</th><th>Data</th></tr>
                                     <c:forEach var="historico" items="${historicos}">
                                 <tr>
-                                    <td><span>${historico.codAluno}</span></td>
-                                    <td>    <span>${historico.codProfessor}</span></td>
+                                    <td><span>${historico.aluno.codAluno} - ${historico.aluno.nomeAluno}</span></td>
+                                    <td><span>${historico.aluno.codGrupo}</span></td>
+                                    <td>    <span>${historico.professor.codProfessor} - ${historico.professor.nomeProfessor} </span></td>
                                     <td>    <span>${historico.ponto}</span></td>
                                     <td>    <span>${historico.descricao}</span></td>
                                     <td>   <span>${historico.data}</span></td>

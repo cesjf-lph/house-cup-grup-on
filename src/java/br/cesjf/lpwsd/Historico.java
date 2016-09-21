@@ -17,8 +17,8 @@ public class Historico implements Serializable {
     private Date data;
     private int ponto;
     private String descricao;
-    private long codAluno;
-    private long codProfessor;
+    private Aluno aluno;
+    private Professor professor;
 
     public Historico() {
     }
@@ -55,20 +55,22 @@ public class Historico implements Serializable {
         this.descricao = descricao;
     }
 
-    public long getCodAluno() {
-        return codAluno;
+    public Aluno getAluno() {
+        return aluno;
     }
 
-    public void setCodAluno(long codAluno) {
-        this.codAluno = codAluno;
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 
-    public long getCodProfessor() {
-        return codProfessor;
+    public Professor getProfessor() {
+        return professor;
     }
 
-    public void setCodProfessor(long codProfessor) {
-        this.codProfessor = codProfessor;
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 
+   
+  
 }

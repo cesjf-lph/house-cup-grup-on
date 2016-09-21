@@ -1,6 +1,6 @@
 package br.cesjf.lpwsd;
 
-import br.cesjf.lpwsd.dao.ProfessorJpaController;
+import br.cesjf.lpwsd.dao.ProfessorJpaControllerOld;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -49,7 +49,7 @@ public class ProfessorServlet extends HttpServlet {
         Professor professor = new Professor();
         professor.setNomeProfessor(nome);
 
-        ProfessorJpaController dao = new ProfessorJpaController(ut, emf);
+        ProfessorJpaControllerOld dao = new ProfessorJpaControllerOld(ut, emf);
         try {
             dao.create(professor);
         } catch (Exception ex) {

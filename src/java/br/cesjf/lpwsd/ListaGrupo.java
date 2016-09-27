@@ -52,11 +52,19 @@ public class ListaGrupo extends HttpServlet {
             System.out.println(rs);
 
             request.setAttribute("alunos", rs);
+            
+              List<Historico> pontos = em.createNativeQuery("SELECT SUM(h.ponto) as x FROM Historico h JOIN Aluno a ON h.ALUNO_CODALUNO = a.CODALUNO").getResultList();
+            System.out.println("pontos" + pontos);
+            request.setAttribute("pontos", pontos);
        } else if(CodGrups != "") {
            List<Aluno> filtro = em.createQuery("SELECT a FROM Aluno a WHERE a.codGrupo =" + request.getParameter("codgrupo")).getResultList();
            System.out.println(filtro);
-
+                                   
             request.setAttribute("alunos", filtro);
+            
+            List<Historico> pontos = em.createNativeQuery("SELECT SUM(h.ponto) as x FROM Historico h JOIN Aluno a ON h.ALUNO_CODALUNO = a.CODALUNO  WHERE a.CODGRUPO =" + request.getParameter("codgrupo")).getResultList();
+            System.out.println("pontos" + pontos);
+            request.setAttribute("pontos", pontos);
        }
 
         //

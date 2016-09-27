@@ -34,9 +34,10 @@
         <ul>
             <c:forEach var="aluno" items="${alunos}">
                 <li style="margin:20px;">
-                    <span>${aluno.codAluno} - ${aluno.nomeAluno}</span>  <span style="background-color:green;color:white;padding:10px;">Grupo: ${aluno.codGrupo}</span>
+               <span style="background-color:green;color:white;padding:10px;">Grupo: ${aluno.codGrupo}</span>        |     <span>${aluno.codAluno} - ${aluno.nomeAluno}</span>  
                 </li>
             </c:forEach>
         </ul>
+        <p> Numéro de pontos do grupo:   ${pontos}</p>
     </body>
 </html>

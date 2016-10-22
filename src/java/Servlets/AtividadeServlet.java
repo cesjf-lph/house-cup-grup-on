@@ -5,11 +5,13 @@ import classes.Atividade;
 import dao.AtividadeJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +36,16 @@ public class AtividadeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+         RequestDispatcher dispachante = request.getRequestDispatcher("/NovaAtividade.jsp");
+         
+           AtividadeJpaController atividadeDao = new AtividadeJpaController(ut, emf);
+           
+           List<Atividade> atividades = atividadeDao.findAtividadeEntities();
+           System.out.println(atividades); 
+          
+          request.setAttribute("atividades", atividades);
+         
+        dispachante.forward(request, response); 
     }
 
     @Override
@@ -57,7 +68,7 @@ public class AtividadeServlet extends HttpServlet {
          } catch (Exception ex) {
              Logger.getLogger(AtividadeServlet.class.getName()).log(Level.SEVERE, null, ex);
          }
-        
+        response.sendRedirect("novaatividade.html");
     } 
 
    

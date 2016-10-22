@@ -4,6 +4,7 @@ package classes;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,18 +15,21 @@ public class Aluno2 implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private long idAluno;
+    private Long idAluno;
     private String nomeAluno;
-    private ArrayList<Atividade> listaAtividades;
+    private List<Atividade> listaAtividades;
 
     public Aluno2() {
+        idAluno = null;
+        nomeAluno = "";
+        listaAtividades = new ArrayList<>();
     }
 
-    public long getIdAluno() {
+    public Long getIdAluno() {
         return idAluno;
     }
 
-    public void setIdAluno(long idAluno) {
+    public void setIdAluno(Long idAluno) {
         this.idAluno = idAluno;
     }
 
@@ -37,12 +41,16 @@ public class Aluno2 implements Serializable {
         this.nomeAluno = nomeAluno;
     }
 
-    public ArrayList<Atividade> getListaAtividades() {
+    public List<Atividade> getListaAtividades() {
         return listaAtividades;
     }
 
-    public void setListaAtividades(ArrayList<Atividade> listaAtividades) {
+    public void setListaAtividades(List<Atividade> listaAtividades) {
         this.listaAtividades = listaAtividades;
+    }
+
+    void matricula(Atividade atividade) {
+       this.listaAtividades.add(atividade);
     }
 
     

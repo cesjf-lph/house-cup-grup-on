@@ -79,8 +79,7 @@ public class Aluno2Test {
         String nomeAluno = "";
         Aluno2 instance = new Aluno2();
         instance.setNomeAluno(nomeAluno);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -90,11 +89,10 @@ public class Aluno2Test {
     public void testGetListaAtividades() {
         System.out.println("getListaAtividades");
         Aluno2 instance = new Aluno2();
-        List<Atividade> expResult = null;
+        List<Atividade> expResult = new ArrayList<>();;
         List<Atividade> result = instance.getListaAtividades();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -103,11 +101,10 @@ public class Aluno2Test {
     @Test
     public void testSetListaAtividades() {
         System.out.println("setListaAtividades");
-        ArrayList<Atividade> listaAtividades = null;
+        ArrayList<Atividade> listaAtividades = new ArrayList<>();
         Aluno2 instance = new Aluno2();
         instance.setListaAtividades(listaAtividades);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+   
     }
     @Test
     public void testMatricula() {

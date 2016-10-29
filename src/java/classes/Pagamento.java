@@ -18,6 +18,10 @@ public class Pagamento implements Serializable {
     private boolean pago;
 
     public Pagamento() {
+        aluno = new Aluno2();
+        atividade = new Atividade();
+        valor = 0f;
+        pago = false;
     }
 
     public Aluno2 getAluno() {

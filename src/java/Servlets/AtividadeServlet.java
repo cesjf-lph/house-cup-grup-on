@@ -38,12 +38,10 @@ public class AtividadeServlet extends HttpServlet {
             throws ServletException, IOException {
          RequestDispatcher dispachante = request.getRequestDispatcher("/NovaAtividade.jsp");
          
-           AtividadeJpaController atividadeDao = new AtividadeJpaController(ut, emf);
-           
-           List<Atividade> atividades = atividadeDao.findAtividadeEntities();
-           System.out.println(atividades); 
+            Atividade atividade = new Atividade();
+         System.out.println(atividade.ListaTodos()); 
           
-          request.setAttribute("atividades", atividades);
+          request.setAttribute("atividades", atividade.ListaTodos());
          
         dispachante.forward(request, response); 
     }

@@ -26,6 +26,7 @@ public class Atividade implements Serializable {
     private Long idAtividade;
     private String nomeAtividade;
     private boolean sitAtividade;
+      private double valor;
 
     public Atividade() {
         idAtividade = null;
@@ -61,6 +62,14 @@ public class Atividade implements Serializable {
 
     public void setSitAtividade(boolean sitAtividade) {
         this.sitAtividade = sitAtividade;
+    }
+    
+     public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
 }

@@ -119,8 +119,16 @@ public class Aluno2Test {
         System.out.println("matricula");
         Aluno2 aluno = new Aluno2();
         Atividade atividade = new Atividade();
-        //assertEquals(0, aluno.getMensalidades().size());
+        
+        //da um valor de teste pra atividade
+        atividade.setValor(100);
+       
+        //
+        assertEquals(0, aluno.getPagamentos().size());
         aluno.matricula(atividade);
-        //assertEquals(1, aluno.getMensalidades().size());
+        assertEquals(1, aluno.getPagamentos().size());
+       
+        //testa porcentagem do primeiro pagamento
+        assertEquals(250f, aluno.getPagamentos().get(0).getValor());
     }
 }

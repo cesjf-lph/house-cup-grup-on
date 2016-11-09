@@ -1,6 +1,5 @@
 package classes;
 
-
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +10,7 @@ import javax.persistence.Id;
 public class Pagamento implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE) 
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Aluno2 aluno;
     private Atividade atividade;
     private double valor;
@@ -54,6 +53,13 @@ public class Pagamento implements Serializable {
 
     public void setPago(boolean pago) {
         this.pago = pago;
+    }
+
+    public double aumentaPorcentagem(double x) {
+        if (x != 0) {
+            x = (x * 150)/100;
+        }
+        return x;
     }
 
 }

@@ -129,6 +129,7 @@ public class Aluno2Test {
         assertEquals(1, aluno.getPagamentos().size());
        
         //testa porcentagem do primeiro pagamento
-        assertEquals(250f, aluno.getPagamentos().get(0).getValor());
+        double recebeValor = aluno.getPagamentos().get(0).getValor();
+        assertEquals(250d, recebeValor, 0.001);
     }
 }

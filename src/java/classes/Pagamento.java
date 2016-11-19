@@ -10,7 +10,8 @@ import javax.persistence.Id;
 public class Pagamento implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+     private Long idPagamento;
     private Aluno2 aluno;
     private Atividade atividade;
     private double valor;
@@ -60,6 +61,14 @@ public class Pagamento implements Serializable {
             x = (x * 150)/100;
         }
         return x;
+    }
+
+    public Long getIdPagamento() {
+        return idPagamento;
+    }
+
+    public void setIdPagamento(Long idPagamento) {
+        this.idPagamento = idPagamento;
     }
 
 }

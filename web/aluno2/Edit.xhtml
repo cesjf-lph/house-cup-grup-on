@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAluno2Title}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAluno2Label_idAluno}" for="idAluno" />
+                    <h:inputText id="idAluno" value="#{aluno2Controller.selected.idAluno}" title="#{bundle.EditAluno2Title_idAluno}" />
+                    <h:outputLabel value="#{bundle.EditAluno2Label_nomeAluno}" for="nomeAluno" />
+                    <h:inputText id="nomeAluno" value="#{aluno2Controller.selected.nomeAluno}" title="#{bundle.EditAluno2Title_nomeAluno}" />
+                    <h:outputLabel value="#{bundle.EditAluno2Label_listaAtividades}" for="listaAtividades" />
+                    <h:inputText id="listaAtividades" value="#{aluno2Controller.selected.listaAtividades}" title="#{bundle.EditAluno2Title_listaAtividades}" />
+                    <h:outputLabel value="#{bundle.EditAluno2Label_listaPagamentos}" for="listaPagamentos" />
+                    <h:inputText id="listaPagamentos" value="#{aluno2Controller.selected.listaPagamentos}" title="#{bundle.EditAluno2Title_listaPagamentos}" />
+                    <h:outputLabel value="#{bundle.EditAluno2Label_pagamentos}" for="pagamentos" />
+                    <h:inputText id="pagamentos" value="#{aluno2Controller.selected.pagamentos}" title="#{bundle.EditAluno2Title_pagamentos}" />
+                </h:panelGrid>
+                <h:commandLink action="#{aluno2Controller.update}" value="#{bundle.EditAluno2SaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAluno2ViewLink}"/>
+                <br />
+                <h:commandLink action="#{aluno2Controller.prepareList}" value="#{bundle.EditAluno2ShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAluno2IndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

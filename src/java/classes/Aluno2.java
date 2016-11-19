@@ -22,7 +22,7 @@ public class Aluno2 implements Serializable {
     UserTransaction ut;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idAluno;
     private String nomeAluno;
     private List<Atividade> listaAtividades;

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+
+            <h:outputLabel for="nomeAtividade" value ="Nome Atividade:"></h:outputLabel>
+            <h:inputText id="nomeAtividade" value="#{atividadeBean.nomeAtividade}"></h:inputText>
+
+            <h:outputLabel for="sitAtividade" value ="Situação Atividade:"></h:outputLabel>
+            <h:inputText id="sitAtividade" value="#{atividadeBean.sitAtividade}"></h:inputText>
+            
+             <h:outputLabel for="valor" value ="Valor:"></h:outputLabel>
+            <h:inputText id="valor" value="#{atividadeBean.valor}"></h:inputText>
+            
+            <h:commandButton value="Enviar" action="${atividadeBean.cadastrarAtividade}"></h:commandButton>
+        </h:form>
+    </h:body>
+</html>
+

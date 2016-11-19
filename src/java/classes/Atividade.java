@@ -22,11 +22,11 @@ public class Atividade implements Serializable {
     UserTransaction ut;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idAtividade;
     private String nomeAtividade;
     private boolean sitAtividade;
-      private double valor;
+    private double valor;
 
     public Atividade() {
         idAtividade = null;
@@ -63,8 +63,8 @@ public class Atividade implements Serializable {
     public void setSitAtividade(boolean sitAtividade) {
         this.sitAtividade = sitAtividade;
     }
-    
-     public double getValor() {
+
+    public double getValor() {
         return valor;
     }
 

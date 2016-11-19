@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAluno2Title}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAluno2Empty}" rendered="#{aluno2Controller.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{aluno2Controller.items.rowCount > 0}">
+                    <h:outputText value="#{aluno2Controller.pagination.pageFirstItem + 1}..#{aluno2Controller.pagination.pageLastItem + 1}/#{aluno2Controller.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{aluno2Controller.previous}" value="#{bundle.Previous} #{aluno2Controller.pagination.pageSize}" rendered="#{aluno2Controller.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{aluno2Controller.next}" value="#{bundle.Next} #{aluno2Controller.pagination.pageSize}" rendered="#{aluno2Controller.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{aluno2Controller.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAluno2Title_idAluno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAluno}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAluno2Title_nomeAluno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomeAluno}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAluno2Title_listaAtividades}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.listaAtividades}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAluno2Title_listaPagamentos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.listaPagamentos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAluno2Title_pagamentos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pagamentos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{aluno2Controller.prepareView}" value="#{bundle.ListAluno2ViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{aluno2Controller.prepareEdit}" value="#{bundle.ListAluno2EditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{aluno2Controller.destroy}" value="#{bundle.ListAluno2DestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{aluno2Controller.prepareCreate}" value="#{bundle.ListAluno2CreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAluno2IndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

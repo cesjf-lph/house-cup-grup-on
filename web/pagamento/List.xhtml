@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPagamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPagamentoEmpty}" rendered="#{pagamentoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{pagamentoController.items.rowCount > 0}">
+                    <h:outputText value="#{pagamentoController.pagination.pageFirstItem + 1}..#{pagamentoController.pagination.pageLastItem + 1}/#{pagamentoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{pagamentoController.previous}" value="#{bundle.Previous} #{pagamentoController.pagination.pageSize}" rendered="#{pagamentoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{pagamentoController.next}" value="#{bundle.Next} #{pagamentoController.pagination.pageSize}" rendered="#{pagamentoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{pagamentoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPagamentoTitle_aluno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aluno}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPagamentoTitle_atividade}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.atividade}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPagamentoTitle_valor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPagamentoTitle_idPagamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPagamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{pagamentoController.prepareView}" value="#{bundle.ListPagamentoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pagamentoController.prepareEdit}" value="#{bundle.ListPagamentoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pagamentoController.destroy}" value="#{bundle.ListPagamentoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{pagamentoController.prepareCreate}" value="#{bundle.ListPagamentoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPagamentoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

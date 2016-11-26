@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAtividadeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAtividadeLabel_idAtividade}" for="idAtividade" />
+                    <h:inputText id="idAtividade" value="#{atividadeController.selected.idAtividade}" title="#{bundle.EditAtividadeTitle_idAtividade}" />
+                    <h:outputLabel value="#{bundle.EditAtividadeLabel_nomeAtividade}" for="nomeAtividade" />
+                    <h:inputText id="nomeAtividade" value="#{atividadeController.selected.nomeAtividade}" title="#{bundle.EditAtividadeTitle_nomeAtividade}" />
+                    <h:outputLabel value="#{bundle.EditAtividadeLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{atividadeController.selected.valor}" title="#{bundle.EditAtividadeTitle_valor}" />
+                </h:panelGrid>
+                <h:commandLink action="#{atividadeController.update}" value="#{bundle.EditAtividadeSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAtividadeViewLink}"/>
+                <br />
+                <h:commandLink action="#{atividadeController.prepareList}" value="#{bundle.EditAtividadeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAtividadeIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

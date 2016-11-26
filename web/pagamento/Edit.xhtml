@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPagamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPagamentoLabel_aluno}" for="aluno" />
+                    <h:inputText id="aluno" value="#{pagamentoController.selected.aluno}" title="#{bundle.EditPagamentoTitle_aluno}" />
+                    <h:outputLabel value="#{bundle.EditPagamentoLabel_atividade}" for="atividade" />
+                    <h:inputText id="atividade" value="#{pagamentoController.selected.atividade}" title="#{bundle.EditPagamentoTitle_atividade}" />
+                    <h:outputLabel value="#{bundle.EditPagamentoLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{pagamentoController.selected.valor}" title="#{bundle.EditPagamentoTitle_valor}" />
+                    <h:outputLabel value="#{bundle.EditPagamentoLabel_idPagamento}" for="idPagamento" />
+                    <h:inputText id="idPagamento" value="#{pagamentoController.selected.idPagamento}" title="#{bundle.EditPagamentoTitle_idPagamento}" />
+                </h:panelGrid>
+                <h:commandLink action="#{pagamentoController.update}" value="#{bundle.EditPagamentoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPagamentoViewLink}"/>
+                <br />
+                <h:commandLink action="#{pagamentoController.prepareList}" value="#{bundle.EditPagamentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPagamentoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

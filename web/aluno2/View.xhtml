@@ -19,10 +19,22 @@
                     <h:outputText value="#{aluno2Controller.selected.idAluno}" title="#{bundle.ViewAluno2Title_idAluno}"/>
                     <h:outputText value="#{bundle.ViewAluno2Label_nomeAluno}"/>
                     <h:outputText value="#{aluno2Controller.selected.nomeAluno}" title="#{bundle.ViewAluno2Title_nomeAluno}"/>
-                    <h:outputText value="#{bundle.ViewAluno2Label_listaAtividades}"/>
-                    <h:outputText value="#{aluno2Controller.selected.listaAtividades}" title="#{bundle.ViewAluno2Title_listaAtividades}"/>
+                    <h:outputText value="#{bundle.ViewAluno2Label_listaAtividade}"/>
+                    <h:dataTable value="#{aluno2Controller.current.listaAtividades}" var="atv">
+                        <h:column>
+                            <f:facet name="header">Atividade</f:facet>
+                            <h:outputText value="#{atv.nomeAtividade}"/>
+                        </h:column>
+                    </h:dataTable>
+
                     <h:outputText value="#{bundle.ViewAluno2Label_listaPagamentos}"/>
-                    <h:outputText value="#{aluno2Controller.selected.listaPagamentos}" title="#{bundle.ViewAluno2Title_listaPagamentos}"/>
+                    <h:dataTable value="#{aluno2Controller.current.listaPagamento}" var="pgt">
+                        <h:column>
+                            <f:facet name="header">Pagamento</f:facet>
+                            <h:outputText value="#{pgt.valor}"/>
+                        </h:column>
+                    </h:dataTable>
+
                     <h:outputText value="#{bundle.ViewAluno2Label_pagamentos}"/>
                     <h:outputText value="#{aluno2Controller.selected.pagamentos}" title="#{bundle.ViewAluno2Title_pagamentos}"/>
                 </h:panelGrid>

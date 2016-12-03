@@ -194,9 +194,11 @@ public class Aluno2Controller implements Serializable {
     public String matricula() {
        // current.matricula(atividade);
        current.matricula(currentA);
-
+       ejbFacade.edit(current);
         return "List";
     }
+    
+   
 
     public void setCurrent(Aluno2 current) {
         this.current = current;

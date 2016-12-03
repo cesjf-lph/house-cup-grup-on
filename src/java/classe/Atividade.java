@@ -2,6 +2,7 @@ package classe;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.annotation.Generated;
 import javax.annotation.Resource;
 import javax.persistence.Entity;
@@ -70,6 +71,45 @@ public class Atividade implements Serializable {
     public String toString() {
         return this.nomeAtividade; //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 61 * hash + Objects.hashCode(this.idAtividade);
+        hash = 61 * hash + Objects.hashCode(this.nomeAtividade);
+        hash = 61 * hash + (this.sitAtividade ? 1 : 0);
+        hash = 61 * hash + (int) (Double.doubleToLongBits(this.valor) ^ (Double.doubleToLongBits(this.valor) >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Atividade other = (Atividade) obj;
+        if (this.sitAtividade != other.sitAtividade) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.valor) != Double.doubleToLongBits(other.valor)) {
+            return false;
+        }
+        if (!Objects.equals(this.nomeAtividade, other.nomeAtividade)) {
+            return false;
+        }
+        if (!Objects.equals(this.idAtividade, other.idAtividade)) {
+            return false;
+        }
+        return true;
+    }
+
+
     
     
 

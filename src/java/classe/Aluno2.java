@@ -3,6 +3,7 @@ package classe;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.annotation.Resource;
 import javax.persistence.Entity;
 import javax.persistence.EntityManagerFactory;
@@ -79,4 +80,33 @@ public class Aluno2 implements Serializable {
         return this.nomeAluno; //To change body of generated methods, choose Tools | Templates.
     }
 
-}
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 71 * hash + Objects.hashCode(this.idAluno);
+        hash = 71 * hash + Objects.hashCode(this.nomeAluno);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Aluno2 other = (Aluno2) obj;
+        if (!Objects.equals(this.nomeAluno, other.nomeAluno)) {
+            return false;
+        }
+        if (!Objects.equals(this.idAluno, other.idAluno)) {
+            return false;
+        }
+        return true;
+    }
+
+    }

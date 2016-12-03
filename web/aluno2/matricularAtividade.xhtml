@@ -18,12 +18,13 @@
 
                 <h:form>
                     <h:outputLabel value="Aluno:" for="nomeAluno" />
-                    <h:selectOneMenu id="nomeAluno" value="#{aluno2Controller.current.nomeAluno}" title="#{bundle.CreateAluno2Title_nomeAluno}">
+                    
+                    <h:selectOneMenu id="nomeAluno" value="#{aluno2Controller.current}" title="#{bundle.CreateAluno2Title_nomeAluno}">
                         <f:selectItems value="#{aluno2Controller.itemsAvailableSelectOne}" />
                     </h:selectOneMenu>
                     
                      <h:outputLabel value="Atividade:" for="atividade" />
-                     <h:selectOneMenu id="atividade" value="#{aluno2Controller.currentA.nomeAtividade}" title="Atividade">
+                     <h:selectOneMenu id="atividade" value="#{aluno2Controller.currentA}" title="Atividade">
                          <f:selectItems value="#{atividadeController.itemsAvailableSelectOne}" />
                      </h:selectOneMenu>
                                                              

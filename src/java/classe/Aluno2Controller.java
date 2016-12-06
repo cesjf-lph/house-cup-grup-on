@@ -192,13 +192,15 @@ public class Aluno2Controller implements Serializable {
     }
 
     public String matricula() {
-       // current.matricula(atividade);
-       current.matricula(currentA);
-       ejbFacade.edit(current);
+        // current.matricula(atividade);
+        current.matricula(currentA);
+        ejbFacade.edit(current);
         return "List";
     }
-    
-   
+
+    public double getTotalPagamentos() {
+        return current.getTotalPagamentos();
+  }
 
     public void setCurrent(Aluno2 current) {
         this.current = current;
@@ -215,7 +217,7 @@ public class Aluno2Controller implements Serializable {
     public void setCurrentA(Atividade currentA) {
         this.currentA = currentA;
     }
-    
+
     @FacesConverter(forClass = Aluno2.class)
     public static class Aluno2ControllerConverter implements Converter {
 

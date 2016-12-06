@@ -16,7 +16,7 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateAtividadeLabel_idAtividade}" for="idAtividade" />
-                    <h:inputText id="idAtividade" value="#{atividadeController.selected.idAtividade}" title="#{bundle.CreateAtividadeTitle_idAtividade}" />
+                    <h:inputText id="idAtividade" readonly="true" value="#{atividadeController.selected.idAtividade}" title="#{bundle.CreateAtividadeTitle_idAtividade}" />
                     <h:outputLabel value="#{bundle.CreateAtividadeLabel_nomeAtividade}" for="nomeAtividade" />
                     <h:inputText id="nomeAtividade" value="#{atividadeController.selected.nomeAtividade}" title="#{bundle.CreateAtividadeTitle_nomeAtividade}" />
                     <h:outputLabel value="#{bundle.CreateAtividadeLabel_valor}" for="valor" />

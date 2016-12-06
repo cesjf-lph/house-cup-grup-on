@@ -19,7 +19,7 @@
                     <h:outputText value="#{aluno2Controller.selected.idAluno}" title="#{bundle.ViewAluno2Title_idAluno}"/>
                     <h:outputText value="#{bundle.ViewAluno2Label_nomeAluno}"/>
                     <h:outputText value="#{aluno2Controller.selected.nomeAluno}" title="#{bundle.ViewAluno2Title_nomeAluno}"/>
-                    <h:outputText value="#{bundle.ViewAluno2Label_listaAtividade}"/>
+                    <h:outputText value="Lista Atividades:"/>
                     <h:dataTable value="#{aluno2Controller.current.listaAtividades}" var="atv">
                         <h:column>
                             <f:facet name="header">Atividade</f:facet>
@@ -28,15 +28,16 @@
                     </h:dataTable>
 
                     <h:outputText value="#{bundle.ViewAluno2Label_listaPagamentos}"/>
-                    <h:dataTable value="#{aluno2Controller.current.listaPagamento}" var="pgt">
+                    <h:dataTable value="#{aluno2Controller.current.listaPagamentos}" var="pgt">
                         <h:column>
                             <f:facet name="header">Pagamento</f:facet>
                             <h:outputText value="#{pgt.valor}"/>
                         </h:column>
                     </h:dataTable>
-
-                    <h:outputText value="#{bundle.ViewAluno2Label_pagamentos}"/>
-                    <h:outputText value="#{aluno2Controller.selected.pagamentos}" title="#{bundle.ViewAluno2Title_pagamentos}"/>
+                    
+                    <h:outputText value="Total devendo: "/>
+                    <h:outputText style="color:red; font-size:20px;" value="#{aluno2Controller.totalPagamentos}"/>
+                    
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{aluno2Controller.destroyAndView}" value="#{bundle.ViewAluno2DestroyLink}"/>

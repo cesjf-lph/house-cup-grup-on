@@ -10,17 +10,20 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PersistenceUnit;
 import javax.transaction.UserTransaction;
 
 @Entity
 public class Aluno2 implements Serializable {
 
-       @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idAluno;
     private String nomeAluno;
+    @OneToMany
     private List<Atividade> listaAtividades;
+    @OneToMany
     private List<Pagamento> listaPagamentos;
 
     public Aluno2() {
@@ -54,8 +57,8 @@ public class Aluno2 implements Serializable {
     public void setListaAtividades(List<Atividade> listaAtividades) {
         this.listaAtividades = listaAtividades;
     }
-    
-     public List<Pagamento> getListaPagamentos() {
+
+    public List<Pagamento> getListaPagamentos() {
         return listaPagamentos;
     }
 
@@ -68,6 +71,16 @@ public class Aluno2 implements Serializable {
         pagamento.setValor(atividade.getValor() + pagamento.aumentaPorcentagem(atividade.getValor()));
         this.listaPagamentos.add(pagamento);
         this.listaAtividades.add(atividade);
+    }
+
+    public double getTotalPagamentos() {
+        List<Pagamento> Pagamentos = getPagamentos();
+        double total = 0;
+        for (int j = 0; j < Pagamentos.size(); j++) {
+            total += Pagamentos.get(j).getValor();
+        }
+
+        return total;
     }
 
     public List<Pagamento> getPagamentos() {
@@ -109,4 +122,4 @@ public class Aluno2 implements Serializable {
         return true;
     }
 
-    }
+}

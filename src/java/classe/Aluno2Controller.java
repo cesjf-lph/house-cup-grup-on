@@ -4,6 +4,7 @@ import classe.util.JsfUtil;
 import classe.util.PaginationHelper;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -193,6 +194,14 @@ public class Aluno2Controller implements Serializable {
 
     public String matricula() {
         // current.matricula(atividade);
+        List<Pagamento> Pagamentos = current.getListaPagamentos();
+        for (int j = 0; j < Pagamentos.size(); j++) {
+            if (Pagamentos.get(j).getValor() > 0) {
+                JsfUtil.addErrorMessage("Aluno devedor");
+                return "matricularAtividade";
+
+            }
+        }
         current.matricula(currentA);
         ejbFacade.edit(current);
         return "List";
@@ -200,7 +209,7 @@ public class Aluno2Controller implements Serializable {
 
     public double getTotalPagamentos() {
         return current.getTotalPagamentos();
-  }
+    }
 
     public void setCurrent(Aluno2 current) {
         this.current = current;
@@ -216,6 +225,22 @@ public class Aluno2Controller implements Serializable {
 
     public void setCurrentA(Atividade currentA) {
         this.currentA = currentA;
+    }
+
+    public classe.Aluno2Facade getEjbFacade() {
+        return ejbFacade;
+    }
+
+    public void setEjbFacade(classe.Aluno2Facade ejbFacade) {
+        this.ejbFacade = ejbFacade;
+    }
+
+    public int getSelectedItemIndex() {
+        return selectedItemIndex;
+    }
+
+    public void setSelectedItemIndex(int selectedItemIndex) {
+        this.selectedItemIndex = selectedItemIndex;
     }
 
     @FacesConverter(forClass = Aluno2.class)

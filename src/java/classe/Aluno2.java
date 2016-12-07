@@ -77,13 +77,13 @@ public class Aluno2 implements Serializable {
         List<Pagamento> Pagamentos = getPagamentos();
         double total = 0;
         for (int j = 0; j < Pagamentos.size(); j++) {
-            total += Pagamentos.get(j).getValor();
+            if (Pagamentos.get(j).isPago() != true) {
+                total += Pagamentos.get(j).getValor();
+            }
         }
-
         return total;
     }
-
-    public List<Pagamento> getPagamentos() {
+     public List<Pagamento> getPagamentos() {
         List<Pagamento> Pagamentos = this.listaPagamentos;
         return Pagamentos;
     }
@@ -96,8 +96,7 @@ public class Aluno2 implements Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 71 * hash + Objects.hashCode(this.idAluno);
-        hash = 71 * hash + Objects.hashCode(this.nomeAluno);
+        hash = 89 * hash + Objects.hashCode(this.idAluno);
         return hash;
     }
 
@@ -113,9 +112,6 @@ public class Aluno2 implements Serializable {
             return false;
         }
         final Aluno2 other = (Aluno2) obj;
-        if (!Objects.equals(this.nomeAluno, other.nomeAluno)) {
-            return false;
-        }
         if (!Objects.equals(this.idAluno, other.idAluno)) {
             return false;
         }

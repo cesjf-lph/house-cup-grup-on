@@ -4,6 +4,7 @@ import classe.util.JsfUtil;
 import classe.util.PaginationHelper;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -40,6 +41,29 @@ public class PagamentoController implements Serializable {
 
     private PagamentoFacade getFacade() {
         return ejbFacade;
+    }
+
+    public String pagar(Pagamento pagamento) {
+        setCurrent(pagamento);
+        current.pagar(current);
+        ejbFacade.edit(current);
+        return "View";
+    }
+
+    public String despagar(Pagamento pagamento) {
+        setCurrent(pagamento);
+        current.despagar(current);
+        ejbFacade.edit(current);
+        return "View";
+    }
+
+    public void pagarTodos(List<Pagamento> Pagamentos) {
+         for (int j = 0; j < Pagamentos.size(); j++) {
+            if (Pagamentos.get(j).isPago() != true) {
+                Pagamentos.get(j).pagar(Pagamentos.get(j));
+                ejbFacade.edit(Pagamentos.get(j));
+            }
+        }
     }
 
     public PaginationHelper getPagination() {
@@ -188,6 +212,30 @@ public class PagamentoController implements Serializable {
 
     public Pagamento getPagamento(java.lang.Long id) {
         return ejbFacade.find(id);
+    }
+
+    public Pagamento getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(Pagamento current) {
+        this.current = current;
+    }
+
+    public classe.PagamentoFacade getEjbFacade() {
+        return ejbFacade;
+    }
+
+    public void setEjbFacade(classe.PagamentoFacade ejbFacade) {
+        this.ejbFacade = ejbFacade;
+    }
+
+    public int getSelectedItemIndex() {
+        return selectedItemIndex;
+    }
+
+    public void setSelectedItemIndex(int selectedItemIndex) {
+        this.selectedItemIndex = selectedItemIndex;
     }
 
     @FacesConverter(forClass = Pagamento.class)

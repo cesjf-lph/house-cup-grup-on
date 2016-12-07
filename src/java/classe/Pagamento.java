@@ -70,5 +70,11 @@ public class Pagamento implements Serializable {
     public void setIdPagamento(Long idPagamento) {
         this.idPagamento = idPagamento;
     }
-
+    
+    public void pagar(Pagamento pagamento){
+        setPago(true);
+    }
+    public void despagar(Pagamento pagamento){
+        setPago(false);
+    }
 }

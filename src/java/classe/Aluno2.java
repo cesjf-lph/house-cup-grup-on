@@ -1,9 +1,15 @@
 package classe;
 
+import static com.oracle.jrockit.jfr.ContentType.Timestamp;
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
+import javafx.scene.chart.PieChart;
 import javax.annotation.Resource;
 import javax.persistence.Entity;
 import javax.persistence.EntityManagerFactory;
@@ -69,8 +75,13 @@ public class Aluno2 implements Serializable {
     public void matricula(Atividade atividade) {
         Pagamento pagamento = new Pagamento();
         pagamento.setValor(atividade.getValor() + pagamento.aumentaPorcentagem(atividade.getValor()));
+               pagamento.setDataPagamento(new Timestamp(System.currentTimeMillis()));
         this.listaPagamentos.add(pagamento);
         this.listaAtividades.add(atividade);
+        
+        System.out.print(this.nomeAluno +" matriculado em " + atividade.getNomeAtividade() + " em um valor de " + 
+                pagamento.getValor());
+        
     }
 
     public double getTotalPagamentos() {

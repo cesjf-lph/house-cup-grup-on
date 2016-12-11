@@ -1,10 +1,12 @@
 package classe;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 @Entity
 public class Pagamento implements Serializable {
@@ -16,6 +18,8 @@ public class Pagamento implements Serializable {
     private Atividade atividade;
     private double valor;
     private boolean pago;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataPagamento;
 
     public Pagamento() {
         aluno = new Aluno2();
@@ -76,5 +80,13 @@ public class Pagamento implements Serializable {
     }
     public void despagar(Pagamento pagamento){
         setPago(false);
+    }
+
+    public Date getDataPagamento() {
+        return dataPagamento;
+    }
+
+    public void setDataPagamento(Date dataPagamento) {
+        this.dataPagamento = dataPagamento;
     }
 }

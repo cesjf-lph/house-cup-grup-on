@@ -196,9 +196,9 @@ public class Aluno2Controller implements Serializable {
         // current.matricula(atividade);
         List<Pagamento> Pagamentos = current.getListaPagamentos();
         for (int j = 0; j < Pagamentos.size(); j++) {
-            if (Pagamentos.get(j).getValor() > 0) {
+            if (!(Pagamentos.get(j).isPago())) {
                 JsfUtil.addErrorMessage("Aluno devedor");
-                return "matricularAtividade";
+                return"matricularAtividade";
 
             }
         }
